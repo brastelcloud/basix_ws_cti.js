@@ -7,5 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "MayamaTakeshi <mayama@brastel.co.jp>",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/brastelcloud/basix_cti.git"
+  },
 }
