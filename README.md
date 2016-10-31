@@ -65,6 +65,7 @@ client.on('message', function(message) {
         MessageParser.handle_message(message);
 });
 
+```
 
 ## chan_info field specification
 
