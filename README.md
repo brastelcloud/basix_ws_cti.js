@@ -69,23 +69,23 @@ client.on('message', function(message) {
 
 ## chan_info field specification
 
-  *uuid: Channel UUID (unique identifier)
-  *direction: 'inbound' or 'outbound'
-  *peer_location: 'internal' (peer from INSIDE the PBX, like in station to station calls) or 'external' (peer is at PSTN)
-  *calling_name: name of caller (if available: usually, in station to station calls) 
-  *calling_number: number of caller
-  *called_number: number of callee
-  *offer_timestamp: timestamp from epoch in microseconds when the channel was created
-  *answer_timestamp: timestamp from epoch in microseconds when the channel was answered
-  *hangup_timestamp: timestamp from epoch in microseconds when the channel was hangup
-  *other_uuid: in case this channel is bridged to another channel, this field will contain the UUID of the other channel
-  *user_name: in case the peer in this channel is a user, this field will contain its user name
-  *user_id: in case the peer in this channel is a user, this field will contain its user id
-  *state: undefined or STATE_INFO
-  *group_id: in case this channel was generated as part of a group call, this field will contain the group id
-  *group_name: in case this channel was generated as part of a group call, this field will contain the group name
-  *target: undefined or TARGET_INFO
-  *last_event: last event that happened in this channel causing this event: NEW_CHANNEL (incoming channel created), CHANNEL_ORIGINATE (outgoing channel created), CHANNEL_ANSWER, CHANNEL_HANGUP, CHANNEL_BRIDGE, CHANNEL_PARK (channel was parked in the PBX. This is not Park/Unpark in park slots), CHANNEL_APPLICATION (channel state has changed)
+  1. uuid: Channel UUID (unique identifier)
+  2. direction: 'inbound' or 'outbound'
+  3. peer_location: 'internal' (peer from INSIDE the PBX, like in station to station calls) or 'external' (peer is at PSTN)
+  4. calling_name: name of caller (if available: usually, in station to station calls) 
+  5. calling_number: number of caller
+  6. called_number: number of callee
+  7. offer_timestamp: timestamp from epoch in microseconds when the channel was created
+  8. answer_timestamp: timestamp from epoch in microseconds when the channel was answered
+  9. hangup_timestamp: timestamp from epoch in microseconds when the channel was hangup
+  10. other_uuid: in case this channel is bridged to another channel, this field will contain the UUID of the other channel
+  11. user_name: in case the peer in this channel is a user, this field will contain its user name
+  12. user_id: in case the peer in this channel is a user, this field will contain its user id
+  13. state: undefined or STATE_INFO
+  14. group_id: in case this channel was generated as part of a group call, this field will contain the group id
+  15. group_name: in case this channel was generated as part of a group call, this field will contain the group name
+  16. target: undefined or TARGET_INFO
+  17. last_event: last event that happened in this channel causing this event: NEW_CHANNEL (incoming channel created), CHANNEL_ORIGINATE (outgoing channel created), CHANNEL_ANSWER, CHANNEL_HANGUP, CHANNEL_BRIDGE, CHANNEL_PARK (channel was parked in the PBX. This is not Park/Unpark in park slots), CHANNEL_APPLICATION (channel state has changed)
 
 ### chan_info.state field specification
 
@@ -94,40 +94,41 @@ client.on('message', function(message) {
   Possible states and data:
 
   1. calling:
-    *target_type: 'user' or 'group'
-    *target_id: user/group id
-    *target_name: user/group name
+      *target_type: 'user' or 'group'
+      *target_id: user/group id
+      *target_name: user/group name
 
   2. bridged:
-    no extra data (see field other_uuid)
+      no extra data (see field other_uuid)
 
   3. voicemail:
-    *target_type: 'user' or 'group'
-    *target_id: user/group id
-    *target_name: user/group name
+      *target_type: 'user' or 'group'
+      *target_id: user/group id
+      *target_name: user/group name
   
   4. checking_voicemail:
-    *target_name: user or group name
+      *target_name: user or group name
 
   5. calling_siptermination:
-    *url: URL being called
+      *url: URL being called
 
   6. calling_external:
-    *address: PSTN number
+      *address: PSTN number
 
   7. ivr:
-    *ivr_id
+      *ivr_id
 
   8. system_operation:
-    *operation: 
+      *operation: 
 
   9. conference:
-    *room_id
+      *room_id
 
   10. plivo:
+      no extra data
 
   11. park:
-    *park_slot
+      *park_slot
 
 
 ### chan_info.target field specification
