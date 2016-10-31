@@ -93,46 +93,48 @@ client.on('message', function(message) {
   Basic data in the fieds are: name (state name) and ts (timestamp when the channel entered the states)
   Possible states and data:
 
-  *calling:
+  1. calling:
     *target_type: 'user' or 'group'
     *target_id: user/group id
     *target_name: user/group name
 
-  *bridged:
+  2. bridged:
     no extra data (see field other_uuid)
 
-  *voicemail:
+  3. voicemail:
     *target_type: 'user' or 'group'
     *target_id: user/group id
     *target_name: user/group name
   
-  *checking_voicemail:
+  4. checking_voicemail:
     *target_name: user or group name
 
-  *calling_siptermination:
+  5. calling_siptermination:
     *url: URL being called
 
-  *calling_external:
+  6. calling_external:
     *address: PSTN number
 
-  *ivr:
+  7. ivr:
     *ivr_id
 
-  *system_operation:
+  8. system_operation:
     *operation: 
 
-  *conference:
+  9. conference:
     *room_id
 
-  *plivo:
+  10. plivo:
 
-  *park:
+  11. park:
     *park_slot
 
 
 ### chan_info.target field specification
-  type: 'user' or 'group'
-  id: user/group id
-  name: user/group name
-  address: address used to reach the user/group (usually the PSTN DID used to call the target).
+  The chan_info.target field contains data about the internal target of the channel
+
+  *type: 'user' or 'group'
+  *id: user/group id
+  *name: user/group name
+  *address: address used to reach the user/group (usually the PSTN DID used to call the target).
 
