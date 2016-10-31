@@ -2,7 +2,7 @@
 Library to permit to interact with Basix
 
 
-Here is sample code on how to get CTI events using WebSockets:
+Here is sample code showing how to get CTI messages using WebSockets:
 
 ```
 var server = 'qabcs.brastel.com';
@@ -12,9 +12,9 @@ var token = 'YYYYYYYYYYYY';
 
 var WebSocketClient = require('ws');
 
-var EventParser = require('basix_cti').event_parser;
+var MessageParser = require('basix_cti').message_parser;
 
-EventParser.init({
+MessageParser.init({
         on_initial_chan_info: function(data) {
                 console.log("initial_chan_info:");
                 console.dir(data);
@@ -51,7 +51,7 @@ client.on('close', function() {
 });
 
 client.on('message', function(message) {
-        EventParser.handle_message(message);
+        MessageParser.handle_message(message);
 });
 
 
