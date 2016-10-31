@@ -1,3 +1,3 @@
 module.exports = {
-	event_parser: require('./lib/event_parser')
+	message_parser: require('./lib/message_parser')
 };
