@@ -1,17 +1,8 @@
 # basix_cti
 
-Library to permit to interact with Basix PBXes.
-
-## Overview
+This is a library to permit to interact with Basix PBXes.
 
 You can connect to your Basix PBX using WebSockets and get notified of events that happen in it.
-
-Events:
-  - initial_chan_info: notifies with current state of all channels present in the PBX. It is an array of chan_info objects. This is sent once immediately after the WS connection is established
-  - chan_info: notifies when a channel event happens like CHANNEL_ANSWER, CHANNEL_HANGUP etc.
-  - mwi_info (Message Waiting Indication): notifies when a message is added to a voicemail box
-
-For efficiency, event data is encoded in BERT format (http://bert-rpc.org/) so we provide a message_parser to decode this data into a javascript object.
 
 Here is sample code showing how to get CTI messages using WebSockets:
 
