@@ -58,4 +58,4 @@ client.on('message', function(message) {
 
 ```
 
-Further details: https://github.com/brastelcloud/basix_cti/wiki/basix_cti
+Further details: https://github.com/brastelcloud/basix_cti/wiki
