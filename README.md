@@ -1,36 +1,30 @@
-# basix_cti
+# basix_ws_cti.js
 
 This is a library to permit to interact with Basix PBXes.
 
 You can connect to your Basix PBX using WebSockets and get notified of events that happen in it.
 
-Here is sample code showing how to get CTI messages using WebSockets:
+Here is sample code showing how to get Basix CTI messages using WebSockets:
 
 ```
-var server = 'qabcs.brastel.com';
-var domain = 'test1.com';
-var user = 'XXXXXXXXXXXX';
-var token = 'YYYYYYYYYYYY';
+var server = 'YOUR_SERVER';
+var domain = 'YOUR_BASIX_DOMAIN';
+var token = 'YOUR_API_TOKEN';
 
 var WebSocketClient = require('ws');
 
-var MessageParser = require('basix_cti').message_parser;
+var MessageParser = require('basix_ws_cti').message_parser;
 
 MessageParser.init({
-        on_initial_chan_info: function(data) {
-                console.log("initial_chan_info:");
+        on_initial_info: function(element_name, data) {
+                console.log("on_initial_info for " + element_name);
                 console.dir(data);
                 console.log();
         },
-        on_chan_info: function(data) {
-                console.log("chan_info:");
+        on_info_event: function(element_name, data) {
+                console.log("on_info_event for " + element_name);
                 console.dir(data);
         },
-        on_mwi_info: function(data) {
-                console.log("mwi_info:");
-                console.dir(data);
-                console.log();
-        }
 });
  
 var opts = {
@@ -38,7 +32,7 @@ var opts = {
   perMessageDeflate: false,
 };
 
-var client = WebSocketClient('wss://' + server + '/basix/api/ws_cti?domain=' + domain + '&api_user=' + user + '&api_token=' + token, "", opts);
+var client = WebSocketClient(`wss://${domain}:${token}@${server}/basix/api/ws_cti`, opts);
  
 client.on('open', function() {
     console.log("Connection Opened");
@@ -57,5 +51,3 @@ client.on('message', function(message) {
 });
 
 ```
-
-Further details: https://github.com/brastelcloud/basix_cti/wiki
