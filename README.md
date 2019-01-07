@@ -21,8 +21,8 @@ MessageParser.init({
                 console.dir(data);
                 console.log();
         },
-        on_info_event: function(element_name, data) {
-                console.log("on_info_event for " + element_name);
+         on_info_event: function(element_name, data, event_name) {
+                console.log(`on_info_event for ${element_name} (${event_name})`);
                 console.dir(data);
         },
 });
