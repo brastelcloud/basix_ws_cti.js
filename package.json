@@ -1,5 +1,5 @@
 {
-  "name": "basix_cti",
+  "name": "basix_ws_cti",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,6 +10,6 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "git://github.com/brastelcloud/basix_cti.git"
+    "url": "git://github.com/brastelcloud/basix_ws_cti.js"
   }
 }
