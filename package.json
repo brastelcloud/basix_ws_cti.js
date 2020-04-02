@@ -1,7 +1,7 @@
 {
   "name": "basix_ws_cti",
   "version": "1.0.0",
-  "description": "",
+  "description": "javascript library to connect with a Basix PBX",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

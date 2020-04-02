@@ -4,7 +4,7 @@ This is a library to permit to interact with Basix PBXes.
 
 You can connect to your Basix PBX using WebSockets and get notified of events that happen in it.
 
-Here is sample code showing how to get Basix CTI messages using WebSockets:
+Here is sample node.js code showing how to get Basix CTI messages using WebSockets:
 
 ```
 var server = 'YOUR_SERVER';
