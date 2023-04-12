@@ -51,3 +51,5 @@ client.on('message', function(message) {
 });
 
 ```
+
+Documentation: see the [wiki](https://github.com/brastelcloud/basix_ws_cti.js/wiki)
