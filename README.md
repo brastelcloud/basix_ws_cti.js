@@ -7,7 +7,7 @@ You can connect to your Basix PBX using WebSockets and get notified of events th
 Here is sample node.js code showing how to get Basix CTI messages using WebSockets:
 
 ```
-var server = 'YOUR_SERVER';
+var server = 'bcs.brastel.com';
 var domain = 'YOUR_BASIX_DOMAIN';
 var token = 'YOUR_API_TOKEN';
 var app_name = 'YOUR_APP_NAME';
@@ -29,7 +29,6 @@ MessageParser.init({
 });
  
 var opts = {
-  rejectUnauthorized: false,
   perMessageDeflate: false,
 };
 
