@@ -1,6 +1,6 @@
 {
   "name": "basix_ws_cti",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "javascript library to connect with a Basix PBX",
   "main": "index.js",
   "scripts": {
