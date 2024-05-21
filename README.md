@@ -71,8 +71,6 @@ This includes channels being created/destroyed, being put into and put out of ri
 
 ### Elements
   - channel: an ordinary channel. If you connect using you API token you will be notified of events in all channels in the PBX. If you connect using session authentication (meaning a user is identified), you will be notified only about channels related to that user (channel.user_id = SESSION_USER_ID) unless you specify ws_cti?full_events=true in the connection URL (restricted to pbx admins).
-  - queued_channel: a channel that was put into a ring queue.
-  - parked_channel: a channel that was parked on a parking slot.
   - user: a user in the pbx
   - group: a group in the pbx
   - group_member: a group membership relation in the pbx
@@ -185,51 +183,6 @@ Ex:
 
 ```
 
-## parked_channel 
-
-(field descriptions are the same as element for channel)
-
-  * **uuid**
-  * **state**
-  * **peer_number**
-  * **end_user**
-Ex:
-```
-{
-  uuid: '5714495a-b8a1-4fff-8420-78648863ecd1',
-  state:
-   { ts: 1546839050549316,
-     name: 'park',
-     data: { slot: 901, parker_id: 10001001, parker_name: 'user1' } },
-  peer_number: '0312341234',
-  end_user: undefined 
-}
-```
-
-## queued_channel
-
-(field descriptions are the same as element for channel)
-
-  * **uuid**
-  * **state**
-  * **peer_number**
-  * **end_user**
-Ex:
-```
-{ uuid: '5714495a-b8a1-4fff-8420-78648863ecd1',
-  state:  { ts: 1546839040035125,
-     name: 'calling',
-     data:
-      { target_location: 'int',
-        target_type: 'group',
-        group_type: 'ring',
-        group_id: 10001111,
-        group_queue_id: 'group1' } },
-  peer_number: '0312341234',
-  end_user: undefined
-}
-```
-
 ## user 
 
   * **id**
@@ -270,7 +223,7 @@ Ex:
   mwi: ''
 }
 ```
-## group_info
+## group
 
   * **id**
   * **name**
@@ -334,7 +287,7 @@ This will permit to identify user's SIP terminals, their registration status and
 
 ### channel state specification
 
-  The channel/queued_channel/parked_channel state field will inform the current state the channel is in. Based on it, it will be possible to know if a channel is ringing a user/group, or being processed by IVR, or accessing voicemail etc.
+  The channel 'state' field will inform the current state the channel is in. Based on it, it will be possible to know if a channel is ringing a user/group, or being processed by IVR, or accessing voicemail etc.
   Base data in the field is:
   * **name** (state name) 
   * **ts** (timestamp when the channel entered the state)
@@ -378,7 +331,7 @@ This will permit to identify user's SIP terminals, their registration status and
 
 
 ### channel target field specification
-  The channel/queued_channel/parked_channel target field contains data about the internal target of the channel (a target is a user or a group in the PBX):
+  The channel 'target' field contains data about the internal target of the channel (a target is a user or a group in the PBX):
 
   * **type**: 'user' or 'group'
   * **id**: user/group id
@@ -386,7 +339,7 @@ This will permit to identify user's SIP terminals, their registration status and
   * **address**: address used to reach the user/group (usually the PSTN DID used to call the target).
 
 ### channel end_user field specification
-  The channel/queued_channel/parked_channel end_user field contains data about the end-user (customer) in that channel (provided by HelpDesk/CRM system). Since more than one end_user might be identified by the HelpDesk/CRM system, the data will shou up as : 
+  The channel 'end_user' field contains data about the end-user (customer) in that channel (provided by HelpDesk/CRM system). Since more than one end_user might be identified by the HelpDesk/CRM system, the data will shou up as : 
   * **count**: number of end_users
   * **items**: array of end_user items with fields **id**, **name**, **organization**, **avatar**, **prefecture**
 
