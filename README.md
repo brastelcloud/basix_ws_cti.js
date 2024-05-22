@@ -34,6 +34,12 @@ var opts = {
 };
 
 var client = new WebSocketClient(`wss://${domain}:${token}@${server}/basix/api/ws_cti?app_name=${app_name}&force=true&full_events=true`, opts);
+/*
+Parameteres:
+  - app_name: used to identify which app is using this connection (used for debug and limit control)
+  - force: if set to true, if the limit for connections was reached, we will disconnect one of the older connections to give room to this new one
+  - full_event: if set to true, events for all channels will be informed (if false, only channel events related to a specific user will be notified)
+
  
 client.on('open', function() {
     console.log("Connection Opened");
