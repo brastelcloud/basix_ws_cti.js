@@ -12,7 +12,6 @@ Here is sample node.js code showing how to get Basix CTI messages using WebSocke
 var server = 'bcs.brastel.com';
 var domain = 'YOUR_BASIX_DOMAIN';
 var token = 'YOUR_API_TOKEN';
-var app_name = 'YOUR_APP_NAME';
 
 var WebSocketClient = require('ws');
 
@@ -34,7 +33,7 @@ var opts = {
   perMessageDeflate: false,
 };
 
-var client = new WebSocketClient(`wss://${domain}:${token}@${server}/basix/api/ws_cti?app_name=${app_name}`, opts);
+var client = new WebSocketClient(`wss://${domain}:${token}@${server}/basix/api/ws_cti?app_name=${app_name}&force=true&full_events=true`, opts);
  
 client.on('open', function() {
     console.log("Connection Opened");
