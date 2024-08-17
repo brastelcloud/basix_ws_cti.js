@@ -152,7 +152,9 @@ So, you take care of connecting to the PBX server and handling disconnection/rec
   * **tags**: will contain things like indicators for call center operation like 'monitoring_required'
   * **last_bridged_user_id**: in case this is a channel for an end-user it will containg the id of the last user that was bridged to it.
   * **last_event**: last event that happened in the channel (just for basix deve internal troubleshooting).
-  * **other_info**: summary data of the other channel this one is related to (due Leg2 origination or state 'bridged')
+  * **other_info**: summary data of the other channel this one is related to (due Leg2 origination o**
+  * **call_id**: value of the SIP Call-ID header. Useful for real-time correlation with other systems
+  
 
 Ex:
 ```
