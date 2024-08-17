@@ -151,7 +151,8 @@ So, you take care of connecting to the PBX server and handling disconnection/rec
   * **end_user**: if there is an end-user in this channel, this will contain its id, name, organization, avatar and prefecture (if provided by integrated HDS/CRM system).
   * **tags**: will contain things like indicators for call center operation like 'monitoring_required'
   * **last_bridged_user_id**: in case this is a channel for an end-user it will containg the id of the last user that was bridged to it.
-  * **last_event**: last event that happened in the channel (just for basix deve internal troubleshooting).
+  * **last_event**: last event that happened in the channel
+  * **last_event_data**: data regarding the last_event
   * **other_info**: summary data of the other channel this one is related to (due Leg2 origination o**
   * **call_id**: value of the SIP Call-ID header. Useful for real-time correlation with other systems
   
@@ -369,7 +370,7 @@ or
 
 Among the events notified for channel_info, we will have last_event="CHANNEL_HANGUP"
 
-The field last_event_data will follow this schema to indicate which side terminated the call and the reason for termination:
+The field last_event_data will follow this schema to indicate which side disposed of the call (terminated) and the reason for termination:
 ```
   - recv_bye,HANGUP_CAUSE | send_bye,HANGUP_CAUSE
   - recv_cancel,HANGUP_CAUSE | send_cancel,HANGUP_CAUSE
