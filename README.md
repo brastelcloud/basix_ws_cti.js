@@ -361,4 +361,36 @@ But if more than one end_user is identified by the HelpDesk/CRM system , instead
 Then depending if type is 'user' or 'end_user' we will have:
   * **user_id**
 or
-  * **end_user** 
+  * **end_user**
+  * 
+### Determining channel hangup disposition and reason
+
+Among the events notified for channel_info, we will have last_event="CHANNEL_HANGUP"
+
+The field last_event_data will follow this schema to indicate which side terminated the call and the reason for termination:
+```
+  - recv_bye,HANGUP_CAUSE | send_bye,HANGUP_CAUSE
+  - recv_cancel,HANGUP_CAUSE | send_cancel,HANGUP_CAUSE
+  - recv_refuse,HANGUP_CAUSE | send_refuse,HANGUP_CAUSE
+```
+ 
+where HANGUP_CAUSE will indicate what caused the hangup. Ex:
+```
+  - recv_cancel,ORIGINATOR_CANCEL: # caller cancelled the call
+  - send_cancel,ORIGINATOR_CANCEL: # forwarding CANCEL received on the other side of the call
+  - send_cancel,LOSE_RACE: call was offered to multiple sip endpoints and one of the other ones answered the call
+  - send_cancel,NO_ANSWER: timeout waiting for answer
+  - send_cancel,PICKED_OFF: when a call that was ringing was picked off (call pickup)
+
+  - recv_bye,NORMAL_CLEARING: normal case
+  - send_bye,NORMAL_CLEARING: normal case
+  - send_bye,ALLOTTED_TIMEOUT: call terminated due to max_call_duration (about 6 hours)
+
+  - send_refuse,NO_ANSWER
+  - recv_refuse,USER_BUSY
+  - recv_refuse,NO_USER_RESPONSE
+```
+
+In case of send_refuse/recv_refuse it is possible to convert HANGUP_CAUSE to SIP Code by consulting:
+  https://developer.signalwire.com/freeswitch/FreeSWITCH-Explained/Troubleshooting-Debugging/Hangup-Cause-Code-Table_3964945/ 
+  
