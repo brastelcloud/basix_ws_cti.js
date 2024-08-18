@@ -153,7 +153,7 @@ So, you take care of connecting to the PBX server and handling disconnection/rec
   * **last_bridged_user_id**: in case this is a channel for an end-user it will containg the id of the last user that was bridged to it.
   * **last_event**: last event that happened in the channel
   * **last_event_data**: data regarding the last_event
-  * **other_info**: summary data of the other channel this one is related to (due Leg2 origination o**
+  * **other_info**: summary data of the other channel this one is related to.
   * **call_id**: value of the SIP Call-ID header. Useful for real-time correlation with other systems
   
 
