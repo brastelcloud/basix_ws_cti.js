@@ -1,3 +1,4 @@
 module.exports = {
-	message_parser: require('./lib/message_parser')
+	message_parser: require('./lib/message_parser'),
+	cti: require('./lib/cti'),
 };
