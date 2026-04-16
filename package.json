@@ -11,5 +11,8 @@
   "repository": {
     "type": "git",
     "url": "git://github.com/brastelcloud/basix_ws_cti.js"
+  },
+  "dependencies": {
+    "events": "^3.2.0"
   }
 }
